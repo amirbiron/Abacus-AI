@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abacus AI - סקירה מקיפה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px 0;
+            color: #555;
+            position: relative;
+        }
+
+        h3::before {
+            content: '▶';
+            color: #667eea;
+            margin-left: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff, #e3f2fd);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            z-index: -1;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .comparison-table tr:hover {
+            background: #e3f2fd;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        .comparison-table td:last-child {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            font-weight: bold;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .pros, .cons {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pros {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border: 2px solid #4caf50;
+        }
+
+        .cons {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border: 2px solid #f44336;
+        }
+
+        .pros h3, .cons h3 {
+            margin-top: 0;
+        }
+
+        .pros h3 {
+            color: #2e7d32;
+        }
+
+        .cons h3 {
+            color: #c62828;
+        }
+
+        .pros ul, .cons ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros li, .cons li {
+            padding: 8px 0;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .pros li::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .cons li::before {
+            content: '✗';
+            color: #f44336;
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .conclusion h2 {
+            color: white;
+            border-bottom: 3px solid white;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .price-highlight {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Abacus AI</h1>
+            <p class="subtitle">הפלטפורמה שמחליפה 10 כלי AI במחיר של אחד</p>
+            <div class="highlight">
+                דמיינו פלטפורמה שמאפשרת לכם לעבור בין 40 מודלי AI שונים, ליצור תמונות ווידאו, לפתח אפליקציות, לנתח מסמכים ואפילו לבנות צ'אטבוט - הכל במחיר של 10 דולר לחודש. זה בדיוק מה שמבטיחה Abacus AI.
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>מה זה Abacus AI?</h2>
+            <p>Abacus AI היא "AI שבונה AI אחר" - פלטפורמה שמיועדת לבנות מערכות בינה מלאכותית בקנה מידה גדול ללא התערבות אנושית מתמדת. היא מציעה שתי גרסאות עיקריות:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Chat LLM Teams</h4>
+                    <p>לפרטיים וצוותים קטנים - 10$ לחודש</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Abacus.AI Enterprise</h4>
+                    <p>לארגונים גדולים - החל מ-5,000$ לחודש</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>מה אפשר לעשות עם הפלטפורמה?</h2>
+            
+            <h3>גישה למודלים המובילים בשוק</h3>
+            <p>במקום לשלם בנפרד עבור ChatGPT, Claude, Gemini ועוד, תקבלו גישה לכולם במקום אחד:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>מודלים פרמיום</h4>
+                    <p>OpenAI O1, GPT-4o, Claude Sonnet 3.7, DeepSeek R1, Gemini 2 Pro</p>
+                </div>
+                <div class="feature-card">
+                    <h4>יצירת תמונות</h4>
+                    <p>DALL-E, Imagen 3, Flux 1.1 Pro</p>
+                </div>
+                <div class="feature-card">
+                    <h4>יצירת וידאו</h4>
+                    <p>Hailuo AI, Kling AI, RunwayML</p>
+                </div>
+            </div>
+
+            <div class="price-highlight">
+                הטיפ החכם: אפשר לעבור בין מודלים באותו שיחה - להשתמש ב-Claude לכתיבה יצירתית ולעבור ל-GPT לניתוח טכני!
+            </div>
+
+            <h3>Computer Agent - העוזר הווירטואלי שעושה הכל</h3>
+            <p>זה לא עוד צ'אטבוט. Computer Agent יכול:</p>
+            <ul>
+                <li>לתכנן לכם טיול שלם כולל הזמנות</li>
+                <li>לתזמן משימות ולנהל יומן</li>
+                <li>לסכם מסמכים ארוכים תוך דקות</li>
+                <li>לבצע מחקר מקיף ולהכין דוחות</li>
+            </ul>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>יצירת סוכני AI מותאמים אישית</h4>
+                    <p>צ'אטבוט לשירות לקוחות, עוזר למכירות, בוט תמיכה טכנית</p>
+                </div>
+                <div class="feature-card">
+                    <h4>יצירת תוכן מתקדמת</h4>
+                    <p>מצגות PowerPoint, מסמכי Word, ניתוח PDF</p>
+                </div>
+                <div class="feature-card">
+                    <h4>עוזר קידוד מתקדם</h4>
+                    <p>השלמה אוטומטית, זיהוי שגיאות, שילוב עם GitHub</p>
+                </div>
+                <div class="feature-card">
+                    <h4>כלי צילום מסך חכם</h4>
+                    <p>צילום וניתוח תוכן שאי אפשר להעתיק, מאמרים בתשלום</p>
+                </div>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h2>הכדאיות הכספית - עכשיו עם המידע המלא</h2>
+            
+            <h3>מה באמת כולל ב-10$ לחודש:</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>נקודות חישוב</h4>
+                    <p>20,000 נקודות חישוב לחודש</p>
+                </div>
+                <div class="feature-card">
+                    <h4>מודלים ללא הגבלה</h4>
+                    <p>GPT-4.1-Mini, Gemini 2.0 Flash, DeepSeek R1, Llama 4</p>
+                </div>
+                <div class="feature-card">
+                    <h4>מודלים פרמיום</h4>
+                    <p>גישה למודלים יקרים כמו Sonnet-3.7 ו-GPT-4.1 עם הנקודות</p>
+                </div>
+                <div class="feature-card">
+                    <h4>כמות הודעות</h4>
+                    <p>5,000-7,000 הודעות ארוכות במודלים יקרים<br>
+                    או 20,000-30,000 הודעות במודלים רגילים</p>
+                </div>
+                <div class="feature-card">
+                    <h4>יצירת תוכן</h4>
+                    <p>עם 20K נקודות אפשר לבחור:<br>
+                    500 תמונות או 40 קליפי וידאו או 25 משימות DeepAgent</p>
+                </div>
+                <div class="feature-card">
+                    <h4>תלוי במחיר השוק</h4>
+                    <p>כמות התמונות/וידאו יכולה להשתנות לפי תעריפי השוק</p>
+                </div>
+            </div>
+
+            <h3>גרסת Pro (20$ לחודש):</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>כל מה שיש ב-10$</h4>
+                    <p>כל התכונות של החבילה הבסיסית</p>
+                </div>
+                <div class="feature-card">
+                    <h4>נקודות נוספות</h4>
+                    <p>5,000 נקודות נוספות (סך הכל 25,000)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>DeepAgent משודרג</h4>
+                    <p>גרסה חזקה יותר עם יכולות מתקדמות</p>
+                </div>
+            </div>
+
+            <h3>טבלת השוואה</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ChatGPT Plus</th>
+                        <th>Claude Pro</th>
+                        <th>Midjourney</th>
+                        <th>Abacus AI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>מחיר</strong></td>
+                        <td>20$/חודש</td>
+                        <td>20$/חודש</td>
+                        <td>10$/חודש</td>
+                        <td>10$/חודש</td>
+                    </tr>
+                    <tr>
+                        <td><strong>מודלי טקסט</strong></td>
+                        <td>GPT-4 ללא הגבלה</td>
+                        <td>Claude ללא הגבלה</td>
+                        <td>❌</td>
+                        <td>4 מודלים ללא הגבלה + גישה למודלים מובילים</td>
+                    </tr>
+                    <tr>
+                        <td><strong>יצירת תמונות</strong></td>
+                        <td>DALL-E (50/יום)</td>
+                        <td>❌</td>
+                        <td>200 תמונות מובטחות</td>
+                        <td>עד 500 תמונות או 40 וידאו (לפי בחירה)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>יצירת וידאו</strong></td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>כלול במקום התמונות</td>
+                    </tr>
+                    <tr>
+                        <td><strong>כלים נוספים</strong></td>
+                        <td>ChatGPT בלבד</td>
+                        <td>Claude בלבד</td>
+                        <td>Midjourney בלבד</td>
+                        <td>Computer Agent, עוזר קידוד, ניתוח PDF, יצירת מסמכים, צילום מסך, סוכני AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>מספר כלים</strong></td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="price-highlight">
+                המסקנה: Abacus AI מספק הכי הרבה תמורה למחיר, אבל עם פחות ודאות לגבי כמויות מדויקות. אם אתם צריכים כמויות קבועות ומובטחות, עדיף לבחור בכלים ספציפיים.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3>למה כולם אוהבים את זה?</h3>
+                    <ul>
+                        <li>מחיר נוח - 10$ לחודש למגוון כלים</li>
+                        <li>קלות שימוש - אפילו למתחילים</li>
+                        <li>גמישות - מעבר בין 40+ מודלים</li>
+                        <li>אוטונומיה - Computer Agent עצמאי</li>
+                        <li>מגוון תכונות בפלטפורמה אחת</li>
+                        <li>שיפורים מתמשכים</li>
+                        <li>4 מודלים ללא הגבלה</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h3>מה הבעיות?</h3>
+                    <ul>
+                        <li>מגבלות שימוש - נקודות נגמרות מהר</li>
+                        <li>שקיפות חסרה - לא ברור כמה עולה מה</li>
+                        <li>שירות לקוחות בעייתי</li>
+                        <li>תקלות טכניות</li>
+                        <li>איכות משתנה ביצירת תמונות/וידאו - לא תמיד ברמה של כלים ייעודיים</li>
+                        <li>עלויות API נוספות</li>
+                        <li>מגבלות התאמה אישית</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>המלצה סופית</h2>
+            <p>Abacus AI היא בחירה מצוינת למי שרוצה לנסות מגוון כלי AI ללא התחייבות כספית גדולה. המחיר הנמוך והמגוון הרחב הופכים אותה לאידיאלית עבור יזמים, פרילנסרים ועסקים קטנים.</p>
+            
+            <p><strong>מתאים לכם אם:</strong> אתם משתמשים בכמה כלי AI שונים, רוצים לחסוך כסף, מעוניינים בגמישות ובחירה בין מודלים, צריכים פתרון כולל לעסק קטן.</p>
+            
+            <p><strong>לא מתאים אם:</strong> אתם משתמשים כבדים שצריכים שימוש ללא הגבלה, מעדיפים התמחות על פני רוחב, צריכים שירות לקוחות מעולה, עובדים על פרויקטים קריטיים שדורשים יציבות מלאה.</p>
+            
+            <button class="cta-button">התחילו עם הגרסה החינמית, בדקו את דפוסי השימוש שלכם, ורק אז החליטו!</button>
+        </div>
+    </div>
+</body>
+</html>
