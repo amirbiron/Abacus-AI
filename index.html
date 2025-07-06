@@ -26,7 +26,7 @@
         }
 
         .header {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #e8f4fd 100%);
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
@@ -34,6 +34,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .header::before {
@@ -83,12 +84,13 @@
         }
 
         .content {
-            background: white;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 50%, #f0f8ff 100%);
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         h2 {
@@ -162,7 +164,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -329,25 +331,9 @@
     <div class="container">
         <div class="header">
             <h1>Abacus AI</h1>
-            <p class="subtitle">הפלטפורמה שמחליפה 10 כלי AI במחיר של אחד</p>
+            <p class="subtitle">הפלטפורמה שמחליפה עשרות כלי AI במחיר של אחד</p>
             <div class="highlight">
-                דמיינו פלטפורמה שמאפשרת לכם לעבור בין 40 מודלי AI שונים, ליצור תמונות ווידאו, לפתח אפליקציות, לנתח מסמכים ואפילו לבנות צ'אטבוט - הכל במחיר של 10 דולר לחודש. זה בדיוק מה שמבטיחה Abacus AI.
-            </div>
-        </div>
-
-        <div class="content">
-            <h2>מה זה Abacus AI?</h2>
-            <p>Abacus AI היא "AI שבונה AI אחר" - פלטפורמה שמיועדת לבנות מערכות בינה מלאכותית בקנה מידה גדול ללא התערבות אנושית מתמדת. היא מציעה שתי גרסאות עיקריות:</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>Chat LLM Teams</h4>
-                    <p>לפרטיים וצוותים קטנים - 10$ לחודש</p>
-                </div>
-                <div class="feature-card">
-                    <h4>Abacus.AI Enterprise</h4>
-                    <p>לארגונים גדולים - החל מ-5,000$ לחודש</p>
-                </div>
+                דמיינו פלטפורמה שמאפשרת לכם לעבור בין 40+ מודלי AI שונים, ליצור תמונות ווידאו, לפתח אפליקציות, לנתח מסמכים ואפילו לבנות צ'אטבוט - הכל במחיר של 10 דולר לחודש. זה בדיוק מה שמבטיחה Abacus AI.
             </div>
         </div>
 
@@ -359,16 +345,16 @@
             
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h4>מודלים פרמיום</h4>
-                    <p>GPT 4.1, Claude Sonnet 4.0, Gemini 2.5 Pro, OpenAI, DeepSeek, Grok</p>
+                    <h4>מודלים פרימיום</h4>
+                    <p>GPT 4.1, Claude Sonnet 4.0, Gemini 2.5 Pro, OpenAI, DeepSeek, Grok ועוד הרבה...</p>
                 </div>
                 <div class="feature-card">
                     <h4>יצירת תמונות</h4>
-                    <p>DALL-E, Imagen 4, Flux 1.1 Pro, Flux 1.1 Pro Ultra, Ideogram 3.0</p>
+                    <p>DALL-E, Imagen 4, Flux 1.1 Pro, Flux 1.1 Pro Ultra, Ideogram 3.0 ועוד...</p>
                 </div>
                 <div class="feature-card">
                     <h4>יצירת וידאו</h4>
-                    <p>Hailuo AI, Kling AI, RunwayML</p>
+                    <p>Hailuo AI, Kling AI, RunwayML ועוד...</p>
                 </div>
             </div>
 
@@ -406,7 +392,7 @@
                     <h4>Search LM - חיפוש חכם</h4>
                     <p>מודל ייעודי שחופש ברשת בזמן אמת, מנתח מקורות מרובים ומביא תשובות מעודכנות</p>
                 </div>
-            </ul>
+            </div>
         </div>
 
         <div class="content">
@@ -423,8 +409,8 @@
                     <p>GPT-4.1-Mini, Gemini 2.0 Flash, DeepSeek, Llama 4</p>
                 </div>
                 <div class="feature-card">
-                    <h4>מודלים פרמיום</h4>
-                    <p>גישה למודלים יקרים כמו GPT 4.1, Claude Sonnet 4.0, Gemini 2.5 Pro, Grok עם הנקודות</p>
+                    <h4>מודלים פרימיום</h4>
+                    <p>גישה למודלים יקרים כמו GPT 4.1, Claude Sonnet 4.0, Gemini 2.5 Pro, Grok ועוד הרבה אחרים עם הנקודות</p>
                 </div>
                 <div class="feature-card">
                     <h4>כמות הודעות</h4>
@@ -482,7 +468,7 @@
                         <td>GPT-4 ללא הגבלה</td>
                         <td>Claude ללא הגבלה</td>
                         <td>❌</td>
-                        <td>4 מודלים ללא הגבלה + גישה למודלים מובילים</td>
+                        <td>4 מודלים ללא הגבלה + גישה למודלים מובילים (GPT 4.1, Claude 4.0, Gemini 2.5 Pro, Grok ועוד...)</td>
                     </tr>
                     <tr>
                         <td><strong>יצירת תמונות</strong></td>
